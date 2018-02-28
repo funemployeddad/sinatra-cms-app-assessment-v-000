@@ -5,7 +5,7 @@ class NotesController < ApplicationController
     @notes = @user.notes
 # binding.pry
     if logged_in?
-      erb :'/notes/view'
+      erb :'/notes/index'
     end
   end
 
