@@ -1,3 +1,4 @@
+<h3> Here are your notes. </h3>
 <% @notes.each do |note| %>
-  <%= note.title %>
-  <% end %>
+  <li> <a href="/notes/<%=note.slug%>"><%= note.title %> </a> </li>
+<% end %>

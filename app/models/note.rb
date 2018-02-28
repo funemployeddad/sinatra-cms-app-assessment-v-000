@@ -2,6 +2,7 @@ class Note < ActiveRecord::Base
 
   belongs_to :user
 
+
   def slug
     self.title.gsub(" ", "-").downcase
   end

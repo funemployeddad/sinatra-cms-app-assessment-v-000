@@ -3,7 +3,7 @@ class NotesController < ApplicationController
   get '/notes' do
     @user = current_user
     @notes = @user.notes
-
+# binding.pry
     if logged_in?
       erb :'/notes/view'
     end
@@ -20,6 +20,8 @@ class NotesController < ApplicationController
       @user = current_user
       @note = Note.create(:title => params[:title], :content => params[:content])
       @note.user_id = @user.id
+      @user.notes << @note
+      @user.save
       redirect '/notes'
     end
   end
