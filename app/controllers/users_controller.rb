@@ -44,7 +44,9 @@ class UsersController < ApplicationController
     erb :'/users/signup_error'
   end
 
-
-
+  get '/logout' do
+    logout!
+    redirect '/'
+  end
 
 end
