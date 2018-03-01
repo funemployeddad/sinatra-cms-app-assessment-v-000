@@ -16,7 +16,6 @@ class NotesController < ApplicationController
     if logged_in?
       if params[:content].empty? || params[:title].empty?
         redirect '/notes/new'
-        binding.pry
       else
         @user = current_user
         @note = Note.create(:title => params[:title], :content => params[:content])
