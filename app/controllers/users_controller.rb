@@ -35,7 +35,6 @@ class UsersController < ApplicationController
       redirect '/login/error'
     end
     @user = User.find_by(username: params[:username])
-    binding.pry
     session[:user_id] = @user.id
     if @user && @user.authenticate(params[:password])
       redirect '/notes'
