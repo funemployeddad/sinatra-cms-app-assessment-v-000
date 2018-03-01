@@ -1,4 +1,5 @@
 <h4><%= @note.title %></h4>
+
 <p><%= @note.content %></p>
 
 <form action="/notes/<%=@note.slug%>/delete" method="POST">
@@ -6,6 +7,6 @@
   <input type="submit" value="Delete Note">
 </form>
 
-<form action="/notes/<%=@note.slug%>/edit" method="POST">
+<form action="/notes/<%=@note.slug%>/edit" method="get">
   <button type="submit">Edit Note</button>
 </form>
