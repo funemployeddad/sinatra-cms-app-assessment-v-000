@@ -31,17 +31,25 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
+    if params[:username].empty? || params[:password].empty?
+      redirect '/login/error'
+    end
     @user = User.find_by(username: params[:username])
+    binding.pry
     session[:user_id] = @user.id
     if @user && @user.authenticate(params[:password])
       redirect '/notes'
     else
-      redirect '/login'
+      redirect '/login/error'
     end
   end
 
   get '/signup/error' do
     erb :'/users/signup_error'
+  end
+
+  get '/login/error' do
+    erb :'/users/login_error'
   end
 
   get '/logout' do
