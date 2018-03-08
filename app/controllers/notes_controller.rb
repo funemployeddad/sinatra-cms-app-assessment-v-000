@@ -17,11 +17,7 @@ class NotesController < ApplicationController
       if params[:content].empty? || params[:title].empty?
         redirect '/notes/new'
       else
-        @user = current_user
-        @note = Note.create(:title => params[:title], :content => params[:content])
-        @note.user_id = @user.id
-        @user.notes << @note
-        @user.save
+        current_user.notes.create(title: params[:title], content: params[:content])
         redirect '/notes'
       end
     else
